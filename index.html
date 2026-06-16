@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MySensei — A Space for Self-Discovery</title>
+  <meta name="description" content="MySensei is a self-reflection companion that asks the questions a great coach would ask. Think deeper. Live with more intention."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #f5f0e8;
+      --warm: #ede8dc;
+      --gold: #b8922a;
+      --gold-light: #c9a84c;
+      --dark: #1c1208;
+      --mid: #5a4a35;
+      --light: #9a876a;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--cream); color: var(--dark); font-family: 'Montserrat', sans-serif; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      background: rgba(245,240,232,0.95); backdrop-filter: blur(8px);
+      padding: 20px 40px; display: flex; justify-content: space-between; align-items: center;
+      border-bottom: 1px solid rgba(184,146,42,.15);
+    }
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; letter-spacing: .3em; color: var(--dark); text-decoration: none; }
+    .nav-logo span { color: var(--gold); }
+    .nav-cta { background: var(--dark); color: var(--cream); padding: 10px 24px; font-family: 'Montserrat', sans-serif; font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; text-decoration: none; transition: background .2s; }
+    .nav-cta:hover { background: var(--gold); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh; display: flex; flex-direction: column;
+      justify-content: center; align-items: center; text-align: center;
+      padding: 120px 24px 80px;
+    }
+    .hero-tag { font-size: .65rem; letter-spacing: .25em; text-transform: uppercase; color: var(--gold); margin-bottom: 32px; }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 300; line-height: 1.1; color: var(--dark); margin-bottom: 24px;
+    }
+    .hero h1 em { font-style: italic; color: var(--gold); }
+    .hero-sub { font-size: clamp(.85rem, 2vw, 1rem); color: var(--mid); max-width: 480px; line-height: 1.8; margin-bottom: 48px; font-weight: 300; }
+    .hero-cta { display: inline-block; background: var(--dark); color: var(--cream); padding: 18px 48px; font-size: .7rem; letter-spacing: .2em; text-transform: uppercase; text-decoration: none; transition: all .2s; margin-bottom: 16px; }
+    .hero-cta:hover { background: var(--gold); }
+    .hero-hint { font-size: .72rem; color: var(--light); letter-spacing: .05em; }
+    .orn { color: var(--gold); letter-spacing: .5em; font-size: .8rem; margin: 40px 0; }
+
+    /* WHAT IS IT */
+    .section { padding: 100px 24px; max-width: 900px; margin: 0 auto; }
+    .section-tag { font-size: .6rem; letter-spacing: .25em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; text-align: center; }
+    .section h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 300; text-align: center; line-height: 1.2; margin-bottom: 24px; }
+    .section p { color: var(--mid); line-height: 1.9; font-weight: 300; text-align: center; max-width: 600px; margin: 0 auto 20px; font-size: .95rem; }
+
+    /* HOW IT WORKS */
+    .steps { background: var(--warm); padding: 100px 24px; }
+    .steps-inner { max-width: 800px; margin: 0 auto; }
+    .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 48px; margin-top: 60px; }
+    .step { text-align: center; }
+    .step-num { font-family: 'Cormorant Garamond', serif; font-size: 3rem; color: var(--gold); opacity: .4; line-height: 1; margin-bottom: 16px; }
+    .step h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 400; margin-bottom: 10px; }
+    .step p { font-size: .82rem; color: var(--mid); line-height: 1.8; font-weight: 300; }
+
+    /* FRAMEWORKS */
+    .frameworks { padding: 100px 24px; max-width: 900px; margin: 0 auto; text-align: center; }
+    .fw-grid { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 40px; }
+    .fw-tag { border: 1px solid rgba(184,146,42,.3); padding: 8px 20px; font-size: .7rem; letter-spacing: .1em; color: var(--mid); }
+
+    /* QUOTE */
+    .quote-section { background: var(--dark); padding: 100px 24px; text-align: center; }
+    .quote { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.5rem, 4vw, 2.5rem); font-weight: 300; font-style: italic; color: var(--cream); max-width: 700px; margin: 0 auto 24px; line-height: 1.5; }
+    .quote-attr { font-size: .7rem; letter-spacing: .2em; color: var(--gold); text-transform: uppercase; }
+
+    /* PRICING */
+    .pricing { padding: 100px 24px; max-width: 600px; margin: 0 auto; text-align: center; }
+    .price-card { border: 1px solid rgba(184,146,42,.3); padding: 48px; margin-top: 48px; }
+    .price-amount { font-family: 'Cormorant Garamond', serif; font-size: 4rem; color: var(--dark); line-height: 1; }
+    .price-period { font-size: .8rem; color: var(--light); letter-spacing: .1em; margin-bottom: 32px; }
+    .price-features { list-style: none; margin-bottom: 40px; }
+    .price-features li { font-size: .82rem; color: var(--mid); padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,.06); font-weight: 300; }
+    .price-features li:last-child { border-bottom: none; }
+    .free-note { font-size: .78rem; color: var(--light); margin-top: 16px; }
+
+    /* EMAIL CAPTURE */
+    .email-section { background: var(--warm); padding: 80px 24px; text-align: center; }
+    .email-section h3 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; margin-bottom: 12px; }
+    .email-section p { font-size: .82rem; color: var(--mid); margin-bottom: 32px; font-weight: 300; }
+    .email-form { display: flex; gap: 0; max-width: 420px; margin: 0 auto; }
+    .email-input { flex: 1; padding: 14px 20px; border: 1px solid rgba(184,146,42,.3); background: var(--cream); font-family: 'Montserrat', sans-serif; font-size: .8rem; outline: none; color: var(--dark); }
+    .email-submit { background: var(--dark); color: var(--cream); border: none; padding: 14px 24px; font-family: 'Montserrat', sans-serif; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; cursor: pointer; transition: background .2s; white-space: nowrap; }
+    .email-submit:hover { background: var(--gold); }
+    .email-success { display: none; font-size: .82rem; color: var(--gold); margin-top: 16px; }
+
+    /* FOOTER */
+    footer { padding: 40px 24px; text-align: center; border-top: 1px solid rgba(0,0,0,.08); }
+    footer p { font-size: .72rem; color: var(--light); line-height: 2; }
+    footer a { color: var(--gold); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#"><MY>MY</MY><span>SENSEI</span></a>
+  <a class="nav-cta" href="https://app.mysensei.app">Begin Free</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-tag">Self-reflection companion</div>
+  <h1>The questions that<br/><em>change everything</em></h1>
+  <p class="hero-sub">MySensei guides you through structured self-reflection using the same frameworks professional coaches use — available whenever you need clarity.</p>
+  <a class="hero-cta" href="https://app.mysensei.app">Begin Your Journey — It's Free</a>
+  <p class="hero-hint">3 free sessions · No credit card required</p>
+  <div class="orn">— ✦ —</div>
+</section>
+
+<!-- WHAT IS IT -->
+<section class="section">
+  <div class="section-tag">What is MySensei</div>
+  <h2>Your thinking partner,<br/>always available</h2>
+  <p>Most of us have important questions we never sit with long enough. MySensei creates a structured space to think deeply about what matters — your goals, your values, your next steps.</p>
+  <p>It's not therapy. It's not advice. It's the kind of powerful questioning that helps you find your own answers.</p>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="steps">
+  <div class="steps-inner">
+    <div class="section-tag" style="text-align:center">How it works</div>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3rem);font-weight:300;text-align:center;margin-bottom:0">Three steps to clarity</h2>
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Choose your lens</h3>
+        <p>Select from 9 professional coaching frameworks — from Wheel of Life to GROW to Values Exploration.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>Reflect deeply</h3>
+        <p>MySensei asks one powerful question at a time, listens to your answers, and goes deeper based on what you share.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>Commit to action</h3>
+        <p>Every session ends with one concrete commitment — something small and real you'll carry forward.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FRAMEWORKS -->
+<section class="frameworks">
+  <div class="section-tag">Coaching frameworks</div>
+  <h2>9 frameworks.<br/>One question at a time.</h2>
+  <div class="fw-grid">
+    <span class="fw-tag">Wheel of Life</span>
+    <span class="fw-tag">GROW Model</span>
+    <span class="fw-tag">Values Exploration</span>
+    <span class="fw-tag">Free-Flowing</span>
+    <span class="fw-tag">OSKAR</span>
+    <span class="fw-tag">STEPPA</span>
+    <span class="fw-tag">CBC</span>
+    <span class="fw-tag">CLEAR</span>
+    <span class="fw-tag">Whole-Person</span>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote-section">
+  <div class="orn" style="color:rgba(184,146,42,.4)">— ✦ —</div>
+  <p class="quote">"The unexamined life is not worth living."</p>
+  <p class="quote-attr">— Socrates</p>
+</section>
+
+<!-- PRICING -->
+<section class="pricing">
+  <div class="section-tag">Simple pricing</div>
+  <h2>Start free.<br/>Go deeper for $12.</h2>
+  <div class="price-card">
+    <div class="price-amount">$12</div>
+    <div class="price-period">per month · cancel anytime</div>
+    <ul class="price-features">
+      <li>✦ Unlimited sessions</li>
+      <li>✦ All 9 coaching frameworks</li>
+      <li>✦ 4 coaching styles</li>
+      <li>✦ Session history saved forever</li>
+      <li>✦ PDF download of every session</li>
+    </ul>
+    <a class="hero-cta" href="https://app.mysensei.app" style="display:block;text-align:center">Start Free — 3 Sessions on Us</a>
+    <p class="free-note">No credit card required to start</p>
+  </div>
+</section>
+
+<!-- EMAIL CAPTURE -->
+<section class="email-section">
+  <h3>Not ready yet?</h3>
+  <p>Leave your email and we'll send you one self-reflection prompt per week — free, forever.</p>
+  <div class="email-form">
+    <input class="email-input" type="email" placeholder="your@email.com" id="email-input"/>
+    <button class="email-submit" onclick="submitEmail()">Send me prompts</button>
+  </div>
+  <p class="email-success" id="email-success">✦ You're in. First prompt arrives this week.</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>
+    <a href="https://app.mysensei.app">MySensei App</a> &nbsp;·&nbsp;
+    MySensei is for self-reflection and personal growth only.<br/>
+    Not therapy, counseling, or professional advice.<br/>
+    &copy; 2026 MySensei
+  </p>
+</footer>
+
+<script>
+async function submitEmail() {
+  const email = document.getElementById('email-input').value;
+  if (!email || !email.includes('@')) return;
+  try {
+    await fetch('https://mysensei-production.up.railway.app/api/email/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email })
+    });
+  } catch(e) {}
+  document.getElementById('email-input').value = '';
+  document.getElementById('email-success').style.display = 'block';
+}
+</script>
+
+</body>
+</html>
