@@ -1,0 +1,32 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="42%" r="75%">
+      <stop offset="0%" stop-color="#2a1c0e"/>
+      <stop offset="100%" stop-color="#1c1208"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e6c878"/>
+      <stop offset="50%" stop-color="#c9a84c"/>
+      <stop offset="100%" stop-color="#b8922a"/>
+    </linearGradient>
+  </defs>
+
+  <!-- background -->
+  <circle cx="256" cy="256" r="256" fill="url(#bg)"/>
+  <circle cx="256" cy="256" r="246" fill="none" stroke="#b8922a" stroke-opacity="0.35" stroke-width="3"/>
+
+  <!-- four-pointed ornament star (✦) -->
+  <g transform="translate(256,256)">
+    <path d="M0,-150
+             C 14,-70 30,-30 90,0
+             C 30,30 14,70 0,150
+             C -14,70 -30,30 -90,0
+             C -30,-30 -14,-70 0,-150 Z"
+          fill="url(#gold)"/>
+    <!-- small accent sparkle points -->
+    <circle cx="0" cy="-150" r="6" fill="#f3dca0"/>
+    <circle cx="0" cy="150" r="6" fill="#f3dca0"/>
+    <circle cx="-90" cy="0" r="6" fill="#f3dca0"/>
+    <circle cx="90" cy="0" r="6" fill="#f3dca0"/>
+  </g>
+</svg>
